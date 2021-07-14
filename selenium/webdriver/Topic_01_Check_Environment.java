@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 		}
 
 		@Test
-		public void TC_01_ValidateCurrentUrl() {
+		public void TC_01_ValidateCurrentUrl_Test() {
 			// Login Page Url matching
 			String loginPageUrl = driver.getCurrentUrl();
 			Assert.assertEquals(loginPageUrl, "http://demo.guru99.com/v4/");
