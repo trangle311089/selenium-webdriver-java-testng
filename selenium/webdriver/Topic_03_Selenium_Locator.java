@@ -50,7 +50,7 @@ import java.util.concurrent.TimeUnit;
 		
 		@Test
 		public void TC_06_findElementByTagName() {
-			driver.findElement(By.tagName("a")).getSize();
+			System.out.println("Links on page = " + driver.findElements(By.tagName("a")).size());          
 		}
 
 		@Test
