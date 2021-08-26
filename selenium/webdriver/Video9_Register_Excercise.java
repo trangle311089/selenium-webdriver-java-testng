@@ -1,12 +1,15 @@
 package webdriver;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -48,12 +51,12 @@ public class Video9_Register_Excercise {
 	public void TC01_Register_With_Empty_Data() {
 		System.out.println("TC01 - Register with empty data");
 		driver.findElement(register_btn).click();
-		Assert.assertEquals(driver.findElement(errorNameField).getText(), "Vui lòng nhập họ tên");
-		Assert.assertEquals(driver.findElement(errorEmailField).getText(), "Vui lòng nhập email");
-		Assert.assertEquals(driver.findElement(errorcEmailField).getText(), "Vui lòng nhập lại địa chỉ email");
-		Assert.assertEquals(driver.findElement(errorPassField).getText(), "Vui lòng nhập mật khẩu");
-		Assert.assertEquals(driver.findElement(errorcPassField).getText(), "Vui lòng nhập lại mật khẩu");
-		Assert.assertEquals(driver.findElement(errorPhoneField).getText(), "Vui lòng nhập số điện thoại.");
+		AssertJUnit.assertEquals(driver.findElement(errorNameField).getText(), "Vui lòng nhập họ tên");
+		AssertJUnit.assertEquals(driver.findElement(errorEmailField).getText(), "Vui lòng nhập email");
+		AssertJUnit.assertEquals(driver.findElement(errorcEmailField).getText(), "Vui lòng nhập lại địa chỉ email");
+		AssertJUnit.assertEquals(driver.findElement(errorPassField).getText(), "Vui lòng nhập mật khẩu");
+		AssertJUnit.assertEquals(driver.findElement(errorcPassField).getText(), "Vui lòng nhập lại mật khẩu");
+		AssertJUnit.assertEquals(driver.findElement(errorPhoneField).getText(), "Vui lòng nhập số điện thoại.");
 
 	}
 
@@ -67,8 +70,8 @@ public class Video9_Register_Excercise {
 		driver.findElement(cPassField).sendKeys("123456");
 		driver.findElement(phoneField).sendKeys("0932073845");
 		driver.findElement(register_btn).click();
-		Assert.assertEquals(driver.findElement(errorEmailField).getText(), "Vui lòng nhập email hợp lệ");
-		Assert.assertEquals(driver.findElement(errorcEmailField).getText(), "Email nhập lại không đúng");
+		AssertJUnit.assertEquals(driver.findElement(errorEmailField).getText(), "Vui lòng nhập email hợp lệ");
+		AssertJUnit.assertEquals(driver.findElement(errorcEmailField).getText(), "Email nhập lại không đúng");
 	}
 
 	@Test
@@ -81,7 +84,7 @@ public class Video9_Register_Excercise {
 		driver.findElement(cPassField).sendKeys("123456");
 		driver.findElement(phoneField).sendKeys("0932073845");
 		driver.findElement(register_btn).click();
-		Assert.assertEquals(driver.findElement(errorcEmailField).getText(), "Email nhập lại không đúng");
+		AssertJUnit.assertEquals(driver.findElement(errorcEmailField).getText(), "Email nhập lại không đúng");
 	}
 
 	@Test
@@ -94,8 +97,8 @@ public class Video9_Register_Excercise {
 		driver.findElement(cPassField).sendKeys("123");
 		driver.findElement(phoneField).sendKeys("0932073845");
 		driver.findElement(register_btn).click();
-		Assert.assertEquals(driver.findElement(errorPassField).getText(), "Mật khẩu phải có ít nhất 6 ký tự");
-		Assert.assertEquals(driver.findElement(errorcPassField).getText(), "Mật khẩu phải có ít nhất 6 ký tự");
+		AssertJUnit.assertEquals(driver.findElement(errorPassField).getText(), "Mật khẩu phải có ít nhất 6 ký tự");
+		AssertJUnit.assertEquals(driver.findElement(errorcPassField).getText(), "Mật khẩu phải có ít nhất 6 ký tự");
 		
 	}
 
@@ -109,7 +112,7 @@ public class Video9_Register_Excercise {
 		driver.findElement(cPassField).sendKeys("12345678");
 		driver.findElement(phoneField).sendKeys("0932073845");
 		driver.findElement(register_btn).click();
-		Assert.assertEquals(driver.findElement(errorcPassField).getText(), "Mật khẩu bạn nhập không khớp");
+		AssertJUnit.assertEquals(driver.findElement(errorcPassField).getText(), "Mật khẩu bạn nhập không khớp");
 	}
 
 	@Test
@@ -122,15 +125,15 @@ public class Video9_Register_Excercise {
 		driver.findElement(cPassField).sendKeys("123456");
 		driver.findElement(phoneField).sendKeys("e");
 		driver.findElement(register_btn).click();
-		Assert.assertEquals(driver.findElement(errorPhoneField).getText(), "Vui lòng nhập con số");
+		AssertJUnit.assertEquals(driver.findElement(errorPhoneField).getText(), "Vui lòng nhập con số");
 		driver.findElement(phoneField).clear();
 		driver.findElement(phoneField).sendKeys("0939968");
 		driver.findElement(register_btn).click();
-		Assert.assertEquals(driver.findElement(errorPhoneField).getText(),"Số điện thoại phải từ 10-11 số.");
+		AssertJUnit.assertEquals(driver.findElement(errorPhoneField).getText(),"Số điện thoại phải từ 10-11 số.");
 		driver.findElement(phoneField).clear();
 		driver.findElement(phoneField).sendKeys("123");
 		driver.findElement(register_btn).click();
-		Assert.assertEquals(driver.findElement(errorPhoneField).getText(),"Số điện thoại bắt đầu bằng: 09 - 03 - 012 - 016 - 018 - 019");
+		AssertJUnit.assertEquals(driver.findElement(errorPhoneField).getText(),"Số điện thoại bắt đầu bằng: 09 - 03 - 012 - 016 - 018 - 019");
 		
 	}
 
