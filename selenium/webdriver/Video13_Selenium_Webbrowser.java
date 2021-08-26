@@ -77,10 +77,6 @@ public class Video13_Selenium_Webbrowser {
 		
 	}
 	
-	@Test
-
-	
-
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
