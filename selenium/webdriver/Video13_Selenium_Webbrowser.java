@@ -76,6 +76,8 @@ public class Video13_Selenium_Webbrowser {
 		Assert.assertTrue((registerPageSource).contains("Đăng ký Facebook"));	
 		
 	}
+	
+	@Test
 
 	
 
