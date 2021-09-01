@@ -67,28 +67,35 @@ public class Video14_Web_Element_Refactor {
 	
 	@Test
 	public void TC02_Verify_Element_Is_Enabled() {
-		if (isElementEnabled(emailTextField));
-		if (isElementEnabled(ageUnder18Radio_btn));
-		if (isElementEnabled(educationTextField));
-		if (isElementEnabled(jobRole1SelectField));
-		if (isElementEnabled(interestDevelopment_checkbox));
-		if (isElementEnabled(slider1));
-		if (isElementEnabled(passTextField));
-		if (isElementEnabled(ageDisabled_btn));
-		if (isElementEnabled(bioTextField));
-		if (isElementEnabled(jobRole3SelectField));
-		if (isElementEnabled(interestDisabled_checkbox));
-		if (isElementEnabled(slider2));
+		Assert.assertTrue(isElementEnabled(emailTextField));
+		Assert.assertTrue(isElementEnabled(ageUnder18Radio_btn));
+		Assert.assertTrue(isElementEnabled(educationTextField));
+		Assert.assertTrue(isElementEnabled(jobRole1SelectField));
+		Assert.assertTrue(isElementEnabled(interestDevelopment_checkbox));
+		Assert.assertTrue(isElementEnabled(slider1));
+		
+		Assert.assertFalse(isElementEnabled(passTextField));
+		Assert.assertFalse(isElementEnabled(ageDisabled_btn));
+		Assert.assertFalse(isElementEnabled(bioTextField));
+		Assert.assertFalse(isElementEnabled(jobRole3SelectField));
+		Assert.assertFalse(isElementEnabled(interestDisabled_checkbox));
+		Assert.assertFalse(isElementEnabled(slider2));
+		
 	}
 
 	@Test
 	public void TC03_Verify_Element_Is_Selected() {
+		Assert.assertFalse(isElementSelected(ageUnder18Radio_btn));
+		Assert.assertFalse(isElementSelected(languageJava_checkbox));
+		
 		clickOnElement(ageUnder18Radio_btn);
 		clickOnElement(languageJava_checkbox);
-		if (isElementSelected(ageUnder18Radio_btn));
-		if (isElementSelected(languageJava_checkbox));
+	
+		Assert.assertTrue(isElementSelected(ageUnder18Radio_btn));
+		Assert.assertTrue(isElementSelected(languageJava_checkbox));
+		
 		clickOnElement(languageJava_checkbox);
-		if(isElementSelected(languageJava_checkbox));
+		Assert.assertFalse(isElementSelected(languageJava_checkbox));
 		
 	}
 	
