@@ -39,7 +39,7 @@ public class Video9_Login_TC05_TC06 {
 	}
 
 	@Test
-	public void TC05_Create_A_New_Account() {
+	public void TC05_Create_A_New_Account() throws InterruptedException {
 		driver.findElement(By.xpath("//div[@class='footer']//li[@class='first']/a[@title='My Account']")).click();
 		driver.findElement(By.xpath("//a[@title='Create an Account']")).click();
 		driver.findElement(By.id("firstname")).sendKeys(firstName);
@@ -56,9 +56,9 @@ public class Video9_Login_TC05_TC06 {
 		
 		driver.findElement(By.xpath("//span[text()='Account']")).click();
 		driver.findElement(By.xpath("//a[@title='Log Out']")).click();
-		String homePageTitle = driver.getTitle();
-		System.out.println(homePageTitle);
-		Assert.assertEquals(homePageTitle,"Magento Commerce");
+		Thread.sleep(8000);
+		String homePageURL = driver.getCurrentUrl();
+		Assert.assertEquals(homePageURL,"http://live.demoguru99.com/index.php/");
 		
 	}
 	
@@ -69,6 +69,7 @@ public class Video9_Login_TC05_TC06 {
 		driver.findElement(By.id("pass")).sendKeys(password);
 		driver.findElement(By.id("send2")).click();
 		Assert.assertTrue(driver.findElement(By.xpath("//h1[text()='My Dashboard']")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='welcome-msg']//strong[text()='Hello," + fullName +"!']")).isDisplayed());
 		String contactInformation = driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div[@class='box-content']/p")).getText();
 		Assert.assertTrue(contactInformation.contains(fullName));
 		Assert.assertTrue(contactInformation.contains(email));
