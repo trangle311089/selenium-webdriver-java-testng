@@ -20,6 +20,14 @@ import org.testng.annotations.AfterClass;
 public class Video17_TC02_03_Handle_Default_Dropdown {
 	WebDriver driver;
 	Select select;
+	
+	By gender_radio =  By.id("gender-female");
+	By firstName_field = By.id("FirstName");
+	By lastName_field = By.id("LastName");
+	By email_field = By.id("Email");
+	By company_field = By.id("Company");
+	By password_field = By.id("Password");
+	By confirmPass_field = By.id("ConfirmPassword");
 
 	@BeforeClass
 	public void beforeClass() {
@@ -28,10 +36,6 @@ public class Video17_TC02_03_Handle_Default_Dropdown {
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		
-	}
-
-	@BeforeMethod
-	public void beforeMethod() {
 	}
 
 	@Test
@@ -69,18 +73,9 @@ public class Video17_TC02_03_Handle_Default_Dropdown {
 		driver.get("https://demo.nopcommerce.com/");
 		driver.findElement(By.className("ico-register")).click();
 		
-		WebElement gender_radio = driver.findElement(By.id("gender-female"));
-		WebElement firstName_field = driver.findElement(By.id("FirstName"));
-		WebElement lastName_field = driver.findElement(By.id("LastName"));
-		WebElement email_field = driver.findElement(By.id("Email"));
-		WebElement company_field = driver.findElement(By.id("Company"));
-		WebElement password_field = driver.findElement(By.id("Password"));
-		WebElement confirmPass_field = driver.findElement(By.id("ConfirmPassword"));
-
-
-		gender_radio.click();
-		firstName_field.sendKeys(firstName);
-		lastName_field.sendKeys(lastName);
+		driver.findElement(gender_radio).click();
+		driver.findElement(firstName_field).sendKeys(firstName);
+		driver.findElement(lastName_field).sendKeys(lastName);
 
 		System.out.println("step 1: select and verify day of birth dropdown field");
 		select = new Select(driver.findElement(By.xpath("//select[@name='DateOfBirthDay']")));
@@ -103,10 +98,10 @@ public class Video17_TC02_03_Handle_Default_Dropdown {
 		Assert.assertEquals(select.getFirstSelectedOption().getText(), year);
 		Assert.assertEquals(select.getOptions().size(), 112);
 
-		email_field.sendKeys(email);
-		company_field.sendKeys(company);
-		password_field.sendKeys(password);
-		confirmPass_field.sendKeys(password);
+		driver.findElement(email_field).sendKeys(email);
+		driver.findElement(company_field).sendKeys(company);
+		driver.findElement(password_field).sendKeys(password);
+		driver.findElement(confirmPass_field).sendKeys(password);
 		driver.findElement(By.id("register-button")).click();
 
 		System.out.println("step 4: verify register successfully");
@@ -124,16 +119,11 @@ public class Video17_TC02_03_Handle_Default_Dropdown {
 		Assert.assertEquals(select.getFirstSelectedOption().getText(), year);
 
 		System.out.println("step 6: verify other informations after registered successfully");
-		Assert.assertTrue(driver.findElement(By.id("gender-female")).isSelected());
-		Assert.assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"),firstName);
-		Assert.assertEquals(driver.findElement(By.id("LastName")).getAttribute("value"), lastName);
-		Assert.assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), email);
-		Assert.assertEquals(driver.findElement(By.id("Company")).getAttribute("value"), company);
-		//Assert.assertTrue(gender_radio.isSelected());
-		//Assert.assertEquals(firstName_field.getText(), firstName);
-		//Assert.assertEquals(lastName_field.getText(), lastName);
-		//Assert.assertEquals(email_field.getText(), email);
-		//Assert.assertEquals(company_field, company);
+		Assert.assertTrue(driver.findElement(gender_radio).isSelected());
+		Assert.assertEquals(driver.findElement(firstName_field).getAttribute("value"),firstName);
+		Assert.assertEquals(driver.findElement(lastName_field).getAttribute("value"), lastName);
+		Assert.assertEquals(driver.findElement(email_field).getAttribute("value"), email);
+		Assert.assertEquals(driver.findElement(company_field).getAttribute("value"), company);
 
 	}
 
