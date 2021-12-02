@@ -110,7 +110,7 @@ public class Video20_Topic09_TC03_04_Custom_Checkbox_Radio {
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		//driver.quit();
 	}
 
 }
