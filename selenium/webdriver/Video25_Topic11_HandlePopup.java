@@ -137,32 +137,34 @@ public class Video25_Topic11_HandlePopup {
 			WebElement closeButton = shadowRoot1.findElement(By.cssSelector("div.shopee-popup__close-btn"));
 			closeButton.click();
 			sleepInSecond(2);
-		} 
+		}
 		driver.findElement(By.cssSelector("input.shopee-searchbar-input__input")).sendKeys("macbook pro");
 		driver.findElement(By.cssSelector("button.shopee-searchbar__search-button")).click();
 
-		//Assert.assertTrue(isPageLoadedSuccess(driver));
 		sleepInSecond(15);
-		
-		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.cssSelector("div.shopee-search-item-result__item div.ZG__4J>div")));
+
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.cssSelector(
+				"div.shopee-search-item-result__items div.shopee-search-item-result__item:nth-child(15)")));
 		sleepInSecond(1);
-		
-		List <WebElement> allItemTitles = driver.findElements(By.cssSelector("div.shopee-search-item-result__item div.ZG__4J>div"));
-		//List <WebElement> allItemTitles = driver.findElements(By.cssSelector("div.shopee-search-item-result__items div a"));
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.cssSelector(
+				"div.shopee-search-item-result__items div.shopee-search-item-result__item:nth-child(30)")));
+		sleepInSecond(1);
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.cssSelector(
+				"div.shopee-search-item-result__items div.shopee-search-item-result__item:nth-child(45)")));
+		sleepInSecond(1);
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.cssSelector(
+				"div.shopee-search-item-result__items div.shopee-search-item-result__item:nth-child(60)")));
+		sleepInSecond(1);
+
+		List<WebElement> allItemTitles = driver
+				.findElements(By.cssSelector("div.shopee-search-item-result__item div.ZG__4J>div"));
 		System.out.println("All item Titles:" + allItemTitles.size());
-		
-		for (WebElement itemTitle : allItemTitles ) {
+
+		for (WebElement itemTitle : allItemTitles) {
 			System.out.println("Title has Macbook Pro:" + itemTitle.getText());
 			Assert.assertTrue(itemTitle.getText().toLowerCase().contains("pro"));
-			//Assert.assertTrue(itemTitle.getAttribute("href").toString().toLowerCase().contains("-pro"));
 		}
 	}
-
-// Returns webelement
-//	public WebElement expandRootElement(WebElement element) {
-//		WebElement ele = (WebElement) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", element);
-//		return ele;
-//	}
 
 	public WebElement expandRootElement(WebElement shadowHost) {
 		WebElement returnObj = null;
