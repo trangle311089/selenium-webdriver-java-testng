@@ -95,11 +95,11 @@ public class Video23_Topic10_User_Interaction_Part1 {
 		driver.get("https://automationfc.github.io/jquery-selectable/");
 		List<WebElement> allNumber = driver.findElements(By.xpath("//ol[@id='selectable']//li"));
 		action.click(allNumber.get(0)).perform();
-		action.keyDown(Keys.CONTROL);
+		//action.keyDown(Keys.CONTROL);
 		action.click(allNumber.get(3)).perform();
-		action.keyDown(Keys.CONTROL);
+		//action.keyDown(Keys.CONTROL);
 		action.click(allNumber.get(5)).perform();
-		action.keyUp(Keys.CONTROL);
+		//action.keyUp(Keys.CONTROL);
 
 		List<WebElement> selectedNumber = driver
 				.findElements(By.xpath("//ol[@id='selectable']//li[contains(@class,'ui-selected')]"));
