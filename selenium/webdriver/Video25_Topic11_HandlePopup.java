@@ -33,7 +33,7 @@ public class Video25_Topic11_HandlePopup {
 		driver.manage().window().maximize();
 	}
 
-	// @Test
+	@Test
 	public void TC01_Fixed_Popup() {
 		driver.get("https://ngoaingu24h.vn/");
 		Assert.assertFalse(driver.findElement(By.cssSelector("div#modal-login-v1")).isDisplayed());
@@ -48,7 +48,7 @@ public class Video25_Topic11_HandlePopup {
 				"Tài khoản không tồn tại!");
 	}
 
-	// @Test
+	@Test
 	public void TC02_Random_Popup_In_Dom() {
 		driver.get("https://blog.testproject.io/");
 		sleepInSecond(30);
@@ -75,7 +75,7 @@ public class Video25_Topic11_HandlePopup {
 		}
 	}
 
-	// @Test
+	@Test
 	public void TC03_Random_Popup_In_Dom2() {
 		driver.get("https://vnk.edu.vn/");
 		sleepInSecond(10);
@@ -94,7 +94,7 @@ public class Video25_Topic11_HandlePopup {
 				.isDisplayed());
 	}
 
-	// @Test
+	@Test
 	public void TC04_Random_Popup_Not_In_Dom() {
 		driver.get("https://dehieu.vn/");
 		sleepInSecond(3);
@@ -163,6 +163,7 @@ public class Video25_Topic11_HandlePopup {
 		for (WebElement itemTitle : allItemTitles) {
 			System.out.println("Title has Macbook Pro:" + itemTitle.getText());
 			Assert.assertTrue(itemTitle.getText().toLowerCase().contains("pro"));
+
 		}
 	}
 
