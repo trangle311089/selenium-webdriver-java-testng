@@ -52,7 +52,10 @@ public class Video26_Topic12_Handle_Frame_iFrame {
 		driver.switchTo().frame(fbIframe);
 		
 		System.out.println("STEP 05: Verify the number of likes is displayed");
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='_1drq']")).getText(), "167K likes");
+		//Assert.assertEquals(driver.findElement(By.xpath("//div[@class='_1drq']")).getText(), "167K likes");
+		String pageLike = driver.findElement(By.xpath("//a[text()='Kyna.vn']/parent::div/following-sibling::div")).getText();
+		System.out.println(pageLike);
+		Assert.assertEquals(pageLike,"167K likes");
 		
 		System.out.println("STEP 06: Switch to the parent Iframe");
 		driver.switchTo().parentFrame();

@@ -108,6 +108,43 @@
 		WebElement shadowRoot2 = expandRootElement(root2);
 
 		WebElement randomPopup = shadowRoot2.findElement(By.cssSelector("element value"));
+		
+========== SWITCH WINDOW/TAB BY ID==============================================================================================
+	public void switchToWindowByID(String windowTabID) {
+		// get all current IDs
+		Set<String> allWindows = driver.getWindowHandles();
+		// use for to check all ID
+		for (String window : allWindows) {
+			if (!window.equals(windowTabID)) {
+				driver.switchTo().window(window);
+				break;
+			}
+		}
+	}
+
+===========SWITCH WINDOW/TAB BY TITLE===========================================================================================
+	public void switchToWindowByTitle(String expectedPageTitle) {
+		Set<String> allWindows = driver.getWindowHandles();
+		for (String window : allWindows) {
+			driver.switchTo().window(window);
+			sleepInSecond(2);
+			String actualPageTitle = driver.getTitle();
+			if (actualPageTitle.equals(expectedPageTitle)) {
+				break;
+			}
+		}
+	}
+
+=========CLOSE ALL TAB/WINDOW EXCEPT SPECIFIED TAB/WINDOW=====================================================================
+	public void closeAllWindowExceptParent(String parentPageID) {
+		Set<String> allWindows = driver.getWindowHandles();
+		for (String window : allWindows) {
+			if (!window.equals(parentPageID)) {
+				driver.switchTo().window(window);
+				driver.close();
+			}
+		}
+	}
 	
 */
 
