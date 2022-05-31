@@ -97,6 +97,19 @@ public class Video16_Handle_Textbox_TextArea {
 
 	@Test
 	public void TC03_New_Customer() {
+		System.out.println("Step 01: Access to Guru page");
+		driver.get("http://demo.guru99.com/v4");
+
+		System.out.println("Step 02: Input user id");
+		driver.findElement(By.xpath("//input[@name='uid']")).sendKeys("mngr409642");
+
+		System.out.println("Step 03: Input password");
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("ajYrAjU");
+
+		System.out.println("Step 04: Click on Login button");
+		driver.findElement(By.xpath("//input[@name='btnLogin']")).click();
+		
+		
 		driver.findElement(By.xpath("//a[text()='New Customer']")).click();
 		driver.findElement(customerName_txt).sendKeys(newCustomerName);
 		driver.findElement(gender_radio_btn).click();
