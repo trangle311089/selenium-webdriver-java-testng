@@ -146,6 +146,16 @@
 		}
 	}
 	
+	
+=========SLEEP IN SECOND======================================================
+public void sleepInSecond(long timeOut) {
+		try {
+			Thread.sleep(timeOut * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 */
 
 
